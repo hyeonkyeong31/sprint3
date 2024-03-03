@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import logo from "../../assets/images/logo.png";
 import { FaSignInAlt, FaRegUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HeaderStyle = styled.header`
     width: 100%;
@@ -82,21 +83,23 @@ export default function Header() {
         <>
             <HeaderStyle>
                 <h1 className="logo">
-                    <img src={logo} alt="" />
+                    <Link to="/">
+                        <img src={logo} alt="" />
+                    </Link>
                 </h1>
                 <nav className="category">
                     <ul>
                         {CATEGORY.map((item) => (
                             <li key={item.id}>
-                                <a
-                                    href={
+                                <Link
+                                    to={
                                         item.id === null
                                             ? "/books"
                                             : `/books?category_id=${item.id}`
                                     }
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
